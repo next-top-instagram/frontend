@@ -49,7 +49,9 @@
             <FormGroup>
                 <Label for="exampleEmail">Input Email</Label>
                 <!-- https://stackoverflow.com/a/59028650 -->
-                <Input plaintext type="email" bind:value={formValues.email} invalid={errors.email} feedback={errors.email} style="border-radius: 5px;
+                <Input plaintext type="email" bind:value={formValues.email} invalid={errors.email} feedback={errors.email} 
+                placeholder="로그인 할 이메일 주소"
+                style="border-radius: 5px;
                 border: solid 0.5px rgba(0, 0, 0, 0.1);
                 background-color: #fafafa;"/>
             </FormGroup>
@@ -58,6 +60,7 @@
             <FormGroup>
                 <Label for="exampleEmail">Input Password</Label>
                 <Input plaintext
+                placeholder="특수, 영문 대소, 숫자 조합 8 ~ 10자리"
                 type="password" style="border-radius: 5px;
                 border: solid 0.5px rgba(0, 0, 0, 0.1);
                 background-color: #fafafa;" bind:value={formValues.password} invalid={errors.password} feedback={errors.password}/>
@@ -67,6 +70,7 @@
             <FormGroup>
                 <Label for="exampleEmail">Input Password Again</Label>
                 <Input plaintext 
+                placeholder="특수, 영문 대소, 숫자 조합 8 ~ 10자리"
                 type="password" style="border-radius: 5px;
                 border: solid 0.5px rgba(0, 0, 0, 0.1);
                 background-color: #fafafa;" bind:value={formValues.passwordConfirm} invalid={errors.passwordConfirm} feedback={errors.passwordConfirm}/>
