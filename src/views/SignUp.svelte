@@ -4,10 +4,11 @@
   import { Button } from 'sveltestrap';
   import { FormValidator } from '../controller/form.vaildator';
   import * as yup from 'yup';
+  import axios from 'axios';
     const formValues = {
-        email: '',
-        password: '',
-        passwordConfirm: '',
+        email: 'asdf@sadf.com',
+        password: 'Asdf1234!',
+        passwordConfirm: 'Asdf1234!',
     }
 
     const formValidator = new FormValidator(
@@ -26,6 +27,13 @@
             console.log('e', event, formValues);
             const result = await formValidator.validate();
             console.log('re', result)
+            try {
+                console.log('send');
+                const axiosResult = await axios.post('https://ptsv2.com/t/e999a-1661636501/post', formValues);
+                console.log('ax', axiosResult)
+            } catch (axiosErr) {
+                console.log('axErr', axiosErr);
+            }
             errors = {};
         } catch (err) {
             console.log('err', err.errors, err.path);
