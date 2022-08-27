@@ -2,6 +2,7 @@
     import Grid from "svelte-grid-responsive";
     import { Form, FormGroup, FormText, Input, Label } from 'sveltestrap';
   import { Button } from 'sveltestrap';
+  import { FormValidator } from '../controller/form.vaildator';
 </script>
 
 <!-- <Grid container> -->
