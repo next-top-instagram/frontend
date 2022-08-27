@@ -13,6 +13,22 @@ export class FormValidator {
   }
 
   validate(): Promise<AssertsShape<any>> {
-    return this.schema.validate(this.formValues);
+    return this.schema.validate(this.formValues, { abortEarly: false });
+  }
+
+  getKeybasedObj() {
+    return Object.keys(this.formValues).reduce((acc: any, elem: string) => {
+      acc[elem] = null;
+      return acc;
+    }, {});
+  }
+
+  getErrors(err: any) {
+    return {
+      ...this.getKeybasedObj(),
+      ...err.inner.reduce((acc: any, err: { path: any; message: any }) => {
+        return { ...acc, [err.path]: err.message };
+      }, {}),
+    };
   }
 }
