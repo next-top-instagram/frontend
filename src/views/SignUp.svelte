@@ -4,8 +4,8 @@
   import { Button } from 'sveltestrap';
 </script>
 
-<Form>
-    <Grid container gutter={12}>
+<!-- <Grid container> -->
+    <Form>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <FormGroup>
                 <Label for="exampleEmail">Input Email</Label>
@@ -26,5 +26,6 @@
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <Button color="primary" style="width:100%">Sign Up</Button>
         </Grid>
-    </Grid>
-</Form>
+    </Form>
+
+<!-- </Grid> -->
