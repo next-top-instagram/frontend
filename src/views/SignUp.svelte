@@ -6,9 +6,9 @@
   import * as yup from 'yup';
   import axios from 'axios';
     const formValues = {
-        email: 'asdf@sadf.com',
-        password: 'Asdf1234!',
-        passwordConfirm: 'Asdf1234!',
+        email: '',
+        password: '',
+        passwordConfirm: '',
     }
 
     const formValidator = new FormValidator(
