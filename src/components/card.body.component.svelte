@@ -2,6 +2,7 @@
     import Grid from "svelte-grid-responsive";
     import Icon from 'svelte-icons-pack/Icon.svelte';
     import AiFillHeart from "svelte-icons-pack/ai/AiFillHeart";
+    import AiOutlineHeart from "svelte-icons-pack/ai/AiOutlineHeart";
     import AiOutlineComment from "svelte-icons-pack/ai/AiOutlineComment";
     import AiOutlineSend from "svelte-icons-pack/ai/AiOutlineSend";
     // https://leshak.github.io/svelte-icons-pack/#/pack/ai
@@ -13,7 +14,7 @@
 </Grid>
 <Grid style="padding: 8px;text-align: left;">
     <span  class="icon-btn">
-        <Icon src={AiFillHeart} size="24"/>
+        <Icon src={AiOutlineHeart} size="24"/>
     </span>
     <span  class="icon-btn" on:click={() => push('/comment/1')}>
         <Icon src={AiOutlineComment} size="24" className="icon-btn"/>
