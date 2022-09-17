@@ -7,16 +7,21 @@
     import AiOutlineSend from "svelte-icons-pack/ai/AiOutlineSend";
     // https://leshak.github.io/svelte-icons-pack/#/pack/ai
     import {push} from 'svelte-spa-router'
+
+    export let id = 0
+    export let body = 'joshua_l The game in Japan was amazing and I want to share some photos'
+    export let postImgUrl = 'https://picsum.photos/200/200?t=12'
 </script>
 
 <Grid>
-    <div  class="post-img"></div>
+    <div  class="post-img" 
+    style="background-image: url({postImgUrl});"></div>
 </Grid>
 <Grid style="padding: 8px;text-align: left;">
     <span  class="icon-btn">
         <Icon src={AiOutlineHeart} size="24"/>
     </span>
-    <span  class="icon-btn" on:click={() => push('/comment/1')}>
+    <span  class="icon-btn" on:click={() => push(`/comment/${id}`)}>
         <Icon src={AiOutlineComment} size="24" className="icon-btn"/>
     </span>
     <span  class="icon-btn">
@@ -24,7 +29,7 @@
     </span>
 </Grid>
 <Grid style="padding:25px;margin-bottom: 40px">
-    joshua_l The game in Japan was amazing and I want to share some photos
+    {body}
 </Grid>
 
 <style>

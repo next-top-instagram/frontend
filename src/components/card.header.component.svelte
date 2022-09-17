@@ -2,6 +2,10 @@
     import Grid from "svelte-grid-responsive";
     import Icon from 'svelte-icons-pack/Icon.svelte';
     import AiOutlineMore from "svelte-icons-pack/ai/AiOutlineMore";
+
+    export let writer = 'Post writer';
+    export let createDateTime = '2022-09-17 12:34:56'
+    export let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
 </script>
 
 <Grid>
@@ -10,11 +14,11 @@
         display: flex;
         align-items: center;
         justify-content: center;">
-                <img class="profile-img" src="https://picsum.photos/200/200?t=1234" alt="profile">
+                <img class="profile-img" src={profileImgUrl} alt="profile">
         </Grid>
         <Grid xs={8}>
-            <Grid xs={12}>joshua_l</Grid>
-            <Grid xs={12}>Tokyo, Japan</Grid>
+            <Grid xs={12}>{writer}</Grid>
+            <Grid xs={12}>{createDateTime}</Grid>
         </Grid>
         <Grid xs={2} style="
         display: flex;

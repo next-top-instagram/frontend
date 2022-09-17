@@ -6,20 +6,96 @@
     import AiOutlinePicture from "svelte-icons-pack/ai/AiOutlinePicture";
     import {push} from 'svelte-spa-router'
     export let params = {}
+
+    let postList = [
+        {
+            id: 1,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=1',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=1'
+        },
+        {
+            id: 2,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=2',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=2'
+        },
+        {
+            id: 3,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=3',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=3'
+        },
+        {
+            id: 4,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=4',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=4'
+        },
+        {
+            id: 5,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=5',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=5'
+        },
+        {
+            id: 6,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=6',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=6'
+        },
+        {
+            id: 7,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=7',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=7'
+        },
+        {
+            id: 8,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=8',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=8'
+        },
+        {
+            id: 9,
+            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
+            writer: 'Post writer',
+            createDateTime: '2022-09-17 12:34:56',
+            profileImgUrl: 'https://picsum.photos/200/200?t=9',
+            thumbnailImgUrl: 'https://picsum.photos/200/200?t=9'
+        },
+    ];
+    let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
 </script>
 
 <Grid container gutter={12} >
     <Grid xs={12} md={8} lg={6} xl={4} xlOffset={4} lgOffset={3} mdOffset={2}>
         <Grid container>
             <Grid xs={4}>
-                <img class="profile-img" src="https://picsum.photos/200/200?t=1234" alt="profile">
+                <img class="profile-img" src={profileImgUrl} alt="profile">
             </Grid>
             <Grid xs={8} style="
             display: flex;
             align-items: center;
             justify-content: center;">
                 <Grid container>
-                    <Grid xs={12}>Post 25</Grid>
+                    <Grid xs={12}>Post {postList.length}</Grid>
                     <Grid xs={12}>{params.email}</Grid>
                 </Grid>
             </Grid>
@@ -38,33 +114,13 @@
             </Grid>
         </Grid>
         <Grid container>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item" on:click={() => push('/post/1')}></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
-            <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
-            </Grid>
+            {#each postList as post, i}
+                <Grid xs={4} style="padding:5px">
+                    <div class="img-grid-item" 
+                    style="background-image: url({post.thumbnailImgUrl});"
+                    on:click={() => push(`/post/${post.id}`)}></div>
+                </Grid>
+            {/each}
         </Grid>
     </Grid>
     <Grid xs={12} md={8} lg={6} xl={4} xlOffset={4} lgOffset={3} mdOffset={2}>
