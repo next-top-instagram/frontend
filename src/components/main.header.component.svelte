@@ -2,6 +2,7 @@
 	import { Navbar, NavbarBrand } from 'sveltestrap';
     import Icon from 'svelte-icons-pack/Icon.svelte';
 	import AiOutlinePlusSquare from "svelte-icons-pack/ai/AiOutlinePlusSquare";
+    import AiOutlineHeart from "svelte-icons-pack/ai/AiOutlineHeart";
 </script>
 
 <Navbar
@@ -11,6 +12,9 @@
   <span>
 	<span class="plus-btn-gap">
 		<Icon src={AiOutlinePlusSquare} size="24"/>
+	</span>
+	<span class="plus-btn-gap">
+		<Icon src={AiOutlineHeart} size="24"/>
 	</span>
 	<img class="profile-img" src="https://picsum.photos/200/200?t=1234" alt="profile">
   </span>
@@ -22,12 +26,14 @@
         width: 32px;
         height: 32px;
         border-radius: 32px;
+        cursor: pointer;
     }
 	.plus-btn-gap {
 		margin-right: 32px;
 		transition-timing-function: linear;
 		transition-property: all;
 		transition-duration: 0.5s;
+        cursor: pointer;
 	}
 
 	@media (min-width: 768px) {
