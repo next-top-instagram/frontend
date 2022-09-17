@@ -5,6 +5,7 @@
     import AiOutlineComment from "svelte-icons-pack/ai/AiOutlineComment";
     import AiOutlineSend from "svelte-icons-pack/ai/AiOutlineSend";
     // https://leshak.github.io/svelte-icons-pack/#/pack/ai
+    import {push} from 'svelte-spa-router'
 </script>
 
 <Grid>
@@ -14,7 +15,7 @@
     <span  class="icon-btn">
         <Icon src={AiFillHeart} size="24"/>
     </span>
-    <span  class="icon-btn">
+    <span  class="icon-btn" on:click={() => push('/comment/1')}>
         <Icon src={AiOutlineComment} size="24" className="icon-btn"/>
     </span>
     <span  class="icon-btn">
@@ -36,5 +37,6 @@
     }
     .icon-btn {
         margin: 0 10px;
+        cursor: pointer;
     }
 </style>

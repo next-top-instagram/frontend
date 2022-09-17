@@ -31,6 +31,7 @@
     "svelte-grid-responsive": "^1.2.4",
     "svelte-icon": "^1.2.4",
     "svelte-icons-pack": "^2.0.0",
+    "svelte-routing": "^1.6.0",
     "svelte-spa-router": "^3.3.0",
     "sveltestrap": "^5.9.0",
     "yup": "^0.32.11"

@@ -4,6 +4,7 @@
     import Icon from 'svelte-icons-pack/Icon.svelte';
     import AiOutlineAppstore from "svelte-icons-pack/ai/AiOutlineAppstore";
     import AiOutlinePicture from "svelte-icons-pack/ai/AiOutlinePicture";
+    import {push} from 'svelte-spa-router'
     export let params = {}
 </script>
 
@@ -38,7 +39,7 @@
         </Grid>
         <Grid container>
             <Grid xs={4} style="padding:5px">
-                <div class="img-grid-item"></div>
+                <div class="img-grid-item" on:click={() => push('/post/1')}></div>
             </Grid>
             <Grid xs={4} style="padding:5px">
                 <div class="img-grid-item"></div>
@@ -65,6 +66,11 @@
                 <div class="img-grid-item"></div>
             </Grid>
         </Grid>
+    </Grid>
+    <Grid xs={12} md={8} lg={6} xl={4} xlOffset={4} lgOffset={3} mdOffset={2}>
+        <div style="height:20px"></div>
+        <Button outline black block>Load more</Button>
+        <div style="height:80px"></div>
     </Grid>
 </Grid>
 

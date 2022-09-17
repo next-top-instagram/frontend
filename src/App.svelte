@@ -46,7 +46,7 @@
 	} */
 
 	.nav-body-gap {
-		height: 50px;
+		height: 80px;
 		transition-timing-function: linear;
 		transition-property: all;
 		transition-duration: 0.5s;
