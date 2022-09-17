@@ -21,7 +21,7 @@
         <Icon src={AiOutlineSend} size="24" className="icon-btn"/>
     </span>
 </Grid>
-<Grid style="padding:25px">
+<Grid style="padding:25px;margin-bottom: 40px">
     joshua_l The game in Japan was amazing and I want to share some photos
 </Grid>
 
