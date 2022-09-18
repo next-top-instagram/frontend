@@ -7,7 +7,7 @@
     import {push} from 'svelte-spa-router'
     // https://github.com/ItalyPaleAle/svelte-spa-router
 
-    export let userEmail = 'test@example.com'
+    export let userEmail = 'user3@example.com'
     export let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
 
     function onClickCreatePost() {

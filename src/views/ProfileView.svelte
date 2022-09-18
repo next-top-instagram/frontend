@@ -85,7 +85,19 @@
     import axios from 'axios';
     import { onMount } from 'svelte';
     onMount(async () => {
-        const axiosResult = await axios.get('http://locasfads' + params.email);
+        try {
+            const axiosResult = await axios.get('http://localhost:8082/api/post/' + params.email);
+            console.log('axios', axiosResult.data);
+            postList = (axiosResult.data || []).map(post => {
+                return {
+                    ...post,
+                    profileImgUrl: 'https://picsum.photos/200/200?t=9',
+                    thumbnailImgUrl: post.url
+                }
+            });
+        } catch (err) {
+            console.log('err', err);
+        }
 	});
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
 </script>
