@@ -6,6 +6,7 @@
     import AiOutlinePicture from "svelte-icons-pack/ai/AiOutlinePicture";
     import {push} from 'svelte-spa-router'
     export let params = {}
+    // params.email
 
     let postList = [
         {
@@ -81,6 +82,11 @@
             thumbnailImgUrl: 'https://picsum.photos/200/200?t=9'
         },
     ];
+    import axios from 'axios';
+    import { onMount } from 'svelte';
+    onMount(async () => {
+        const axiosResult = await axios.get('http://locasfads' + params.email);
+	});
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
 </script>
 
