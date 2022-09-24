@@ -100,6 +100,7 @@
         }
 	});
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
+    let tab = 'grid'
 
     function onLogOutBtnClicked() {
         push("/")
@@ -131,16 +132,20 @@
             </Grid> 
         </Grid>
         <Grid container style="margin: 15px 0">
-            <Grid xs={6} style="border-bottom: 4px solid #6c757d; padding-bottom: 15px;cursor:pointer">
-                <Icon src={AiOutlineAppstore} size="24"/>
+            <Grid xs={6} style="border-bottom: {tab === 'grid' ? 4 : 0}px solid #6c757d; padding-bottom: 15px;cursor:pointer">
+                <div on:click={() => {tab = 'grid'}}>
+                    <Icon src={AiOutlineAppstore} size="24"/>
+                </div>
             </Grid>
-            <Grid xs={6} style="border-bottom: 0px solid #6c757d; padding-bottom: 15px;cursor:pointer">
-                <Icon src={AiOutlinePicture} size="24"/>
+            <Grid xs={6} style="border-bottom: {tab === 'row' ? 4 : 0}px solid #6c757d; padding-bottom: 15px;cursor:pointer">
+                <div on:click={() => {tab = 'row'}}>
+                    <Icon src={AiOutlinePicture} size="24"/>
+                </div>
             </Grid>
         </Grid>
         <Grid container>
             {#each postList as post, i}
-                <Grid xs={4} style="padding:5px">
+                <Grid xs={tab === 'grid' ? 4 : 0} style="padding:5px">
                     <div class="img-grid-item" 
                     style="background-image: url({post.thumbnailImgUrl});"
                     on:click={() => push(`/post/${post.id}`)}></div>
