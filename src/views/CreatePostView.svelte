@@ -45,14 +45,14 @@
     const handleDrop = async (event) => {
         event.preventDefault();
         console.log('e', event.dataTransfer.files);
-        if (event.dataTransfer.files && event.dataTransfer.files.length >= 0) {
+        if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
             img = await fileLoader(event.dataTransfer.files[0]);
         }
     }
 
     const handleFileInputChange = async (event) => {
         console.log('e', event.target.files);
-        if (event.target.files && event.target.files.length >= 0) {
+        if (event.target.files && event.target.files.length > 0) {
             img = await fileLoader(event.target.files[0]);
         }
     }
