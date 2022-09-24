@@ -119,9 +119,12 @@
             </Grid>
         </Grid>
         <Grid container style="margin: 15px 0">
-            <Grid xs={10} xsOffset={1}>
+            <Grid xs={10} xsOffset={1} md={6} mdOffset={0} lg={5} style="margin:0 auto 15px; padding: 0 5px">
                 <Button block>Update password</Button>
             </Grid>
+            <Grid xs={10} xsOffset={1} md={6} mdOffset={0} lg={5}  style="margin:0 auto 15px; padding: 0 5px">
+                <Button block>Log-out</Button>
+            </Grid> 
         </Grid>
         <Grid container style="margin: 15px 0">
             <Grid xs={6} style="border-bottom: 4px solid #6c757d; padding-bottom: 15px;cursor:pointer">
