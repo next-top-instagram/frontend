@@ -31,7 +31,7 @@
 <!-- <Grid container> -->
     <Form on:submit={handleSubmit}>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
-            <div style="border: dashed #6c757d 7px;width:100%; height:150px;margin: 15px auto;display: flex;
+            <div style="border: dashed #6c757d 7px;width:100%; height:150px;margin: 15px auto;display: flex;border-radius: 15px;
             align-items: center;
             justify-content: center;">
                 <Icon src={AiOutlinePlus} size="24"/> 
@@ -40,7 +40,7 @@
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <FormGroup>
                 <!-- <Label for="exampleText">Text Area</Label> -->
-                <Input type="textarea" name="text" id="exampleText" placeholder="무슨 일이 있었나요?" rows="4" />
+                <Input type="textarea" name="text" id="exampleText" placeholder="무슨 일이 있었나요?" rows="4" style="border-radius: 15px"/>
             </FormGroup> 
         </Grid>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
