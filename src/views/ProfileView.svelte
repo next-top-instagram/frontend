@@ -100,6 +100,10 @@
         }
 	});
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
+
+    function onLogOutBtnClicked() {
+        push("/")
+    }
 </script>
 
 <Grid container gutter={12} >
@@ -120,10 +124,10 @@
         </Grid>
         <Grid container style="margin: 15px 0">
             <Grid xs={10} xsOffset={1} md={6} mdOffset={0} lg={5} style="margin:0 auto 15px; padding: 0 5px">
-                <Button block>Update password</Button>
+                <Button block on:click={() => push("/passwordchage")}>Update password</Button>
             </Grid>
             <Grid xs={10} xsOffset={1} md={6} mdOffset={0} lg={5}  style="margin:0 auto 15px; padding: 0 5px">
-                <Button block>Log-out</Button>
+                <Button block on:click={() => onLogOutBtnClicked()}>Log-out</Button>
             </Grid> 
         </Grid>
         <Grid container style="margin: 15px 0">

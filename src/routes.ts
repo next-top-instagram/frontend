@@ -6,6 +6,8 @@ import ProfileView from "./views/ProfileView.svelte";
 import CommentView from "./views/CommentView.svelte";
 import NotiView from "./views/NotiView.svelte";
 import OnePostView from "./views/OnePostView.svelte";
+import CreatePostView from "./views/CreatePostView.svelte";
+import PasswordChangeView from "./views/PasswordChangeView.svelte";
 
 const routes = {
   "/": IndexView,
@@ -16,6 +18,8 @@ const routes = {
   "/comment/:id": CommentView,
   "/noti": NotiView,
   "/post/:id": OnePostView,
+  "/create": CreatePostView,
+  "/passwordchage": PasswordChangeView,
 };
 
 export default routes;
