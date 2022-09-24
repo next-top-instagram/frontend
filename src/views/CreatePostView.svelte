@@ -26,6 +26,15 @@
 
     const handleSubmit = async (event) => {
     }
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
+    }
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        console.log('e', event.dataTransfer.files);
+    }
 </script>
 
 <!-- <Grid container> -->
@@ -33,9 +42,10 @@
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <div style="border: dashed #6c757d 7px;width:100%; height:150px;margin: 15px auto;display: flex;border-radius: 15px;
             align-items: center;
-            justify-content: center;">
+            justify-content: center;" on:drop={handleDrop} on:dragover={handleDragOver}>
                 <Icon src={AiOutlinePlus} size="24"/> 
             </div>
+            <input type="file" name="myImage" accept="image/png, image/gif, image/jpeg" style="display: none;"/>
         </Grid>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <FormGroup>
