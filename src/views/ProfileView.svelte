@@ -15,7 +15,7 @@
             writer: 'Post writer',
             createDateTime: '2022-09-17 12:34:56',
             profileImgUrl: 'https://picsum.photos/200/200?t=1',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=1'
+            thumbnailImgUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
         },
         {
             id: 2,
@@ -88,13 +88,13 @@
         try {
             const axiosResult = await axios.get('http://localhost:8082/api/post/' + params.email);
             console.log('axios', axiosResult.data);
-            postList = (axiosResult.data || []).map(post => {
-                return {
-                    ...post,
-                    profileImgUrl: 'https://picsum.photos/200/200?t=9',
-                    thumbnailImgUrl: post.url
-                }
-            });
+            // postList = (axiosResult.data || []).map(post => {
+            //     return {
+            //         ...post,
+            //         profileImgUrl: 'https://picsum.photos/200/200?t=9',
+            //         thumbnailImgUrl: post.url
+            //     }
+            // });
         } catch (err) {
             console.log('err', err);
         }

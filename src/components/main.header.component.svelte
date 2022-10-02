@@ -20,7 +20,7 @@
     }
 
     function onClickGoToProfile() {
-        push(`/profile/${userEmail}`)
+        push(`/profile/${localStorage.getItem("email")}`)
         // https://github.com/EmilTholin/svelte-routing/blob/master/README.md
     }
 </script>

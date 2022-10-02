@@ -5,6 +5,8 @@
   import { FormValidator } from '../controller/form.vaildator';
   import * as yup from 'yup';
   import axios from 'axios';
+import {push} from 'svelte-spa-router'
+
     const formValues = {
         email: '',
         password: '',
@@ -27,8 +29,12 @@ const handleSubmit = async (event) => {
         console.log('re', result)
         try {
             console.log('send');
-            const axiosResult = await axios.post('https://ptsv2.com/t/e999a-1661636501/post', formValues);
+            const axiosResult = await axios.post('http://localhost:8082/api/login', formValues);
             console.log('ax', axiosResult)
+            if (axiosResult.data.status) {
+                localStorage.setItem("email", formValues.email);
+                push("/")
+            }
         } catch (axiosErr) {
             console.log('axErr', axiosErr);
         }
