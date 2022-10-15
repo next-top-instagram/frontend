@@ -8,8 +8,8 @@
 import {push} from 'svelte-spa-router'
 
     const formValues = {
-        email: '',
-        password: '',
+        email: 'hello@example.com',
+        password: '@Test1234',
     }
 
     const formValidator = new FormValidator(
@@ -29,7 +29,7 @@ const handleSubmit = async (event) => {
         console.log('re', result)
         try {
             console.log('send');
-            const axiosResult = await axios.post('http://localhost:8082/api/login', formValues);
+            const axiosResult = await axios.post('/backend/api/login', formValues);
             console.log('ax', axiosResult)
             if (axiosResult.data.status) {
                 localStorage.setItem("email", formValues.email);

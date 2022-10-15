@@ -7,6 +7,7 @@ import sveltePreprocess from "svelte-preprocess";
 // import typescript from '@rollup/plugin-typescript';
 import typescript from "rollup-plugin-typescript2";
 import css from "rollup-plugin-css-only";
+import dev from "rollup-plugin-dev";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -81,6 +82,13 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
+
+    // !production &&
+    //   dev({
+    //     host: "localhost",
+    //     port: 8080,
+    //     proxy: [{ from: "/api/*", to: "http://localhost:8082/api" }],
+    //   }),
   ],
   watch: {
     clearScreen: false,

@@ -35,7 +35,7 @@ import { push } from "svelte-spa-router";
             const frm = new FormData()
             frm.append('body', formValues.body)
             frm.append('file', formValues.formFile)
-            const axiosResult = await axios.post('http://localhost:8082/api/post', frm, {
+            const axiosResult = await axios.post('/backend/api/post', frm, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
