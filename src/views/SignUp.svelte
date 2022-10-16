@@ -29,7 +29,7 @@
             console.log('re', result)
             try {
                 console.log('send');
-                const axiosResult = await axios.post('https://ptsv2.com/t/e999a-1661636501/post', formValues);
+                const axiosResult = await axios.post('/backend/api/account', formValues);
                 console.log('ax', axiosResult)
             } catch (axiosErr) {
                 console.log('axErr', axiosErr);
