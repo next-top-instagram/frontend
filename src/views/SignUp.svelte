@@ -31,6 +31,7 @@
                 console.log('send');
                 const axiosResult = await axios.post('/backend/api/account', formValues);
                 console.log('ax', axiosResult)
+                alert(axiosResult.data.message)
             } catch (axiosErr) {
                 console.log('axErr', axiosErr);
             }
