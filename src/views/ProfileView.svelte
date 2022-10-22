@@ -10,22 +10,28 @@
     // params.email
 
     let postList = [];
+    let page = 0;
     import axios from 'axios';
     import { onMount } from 'svelte';
-    onMount(async () => {
+    async function loadPostList(page) {
         try {
-            const axiosResult = await axios.get('/backend/api/post/' + params.email);
+            const axiosResult = await axios.get('/backend/api/post/' + params.email + '?page=' + page);
             console.log('axios', axiosResult.data);
-            postList = (axiosResult.data || []).map(post => {
+            const resList = (axiosResult.data || []).map(post => {
                 return {
                     ...post,
                     profileImgUrl: 'https://picsum.photos/200/200?t=9',
                     thumbnailImgUrl: post.url
                 }
             });
+
+            postList = postList.concat(resList);
         } catch (err) {
             console.log('err', err);
         }
+    }
+    onMount(async () => {
+        await loadPostList(page);
 	});
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
     let tab = 'grid'
@@ -94,7 +100,7 @@
     </Grid>
     <Grid xs={12} md={8} lg={6} xl={4} xlOffset={4} lgOffset={3} mdOffset={2}>
         <div style="height:20px"></div>
-        <Button outline black block>Load more</Button>
+        <Button outline black block on:click={async () => await loadPostList(++page)}>Load more</Button>
         <div style="height:80px"></div>
     </Grid>
 </Grid>
