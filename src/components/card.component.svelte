@@ -20,6 +20,7 @@
         try {
             const result = await axios.delete(`/backend/api/post/${id}`);
             alert(result.data.message);
+            isDeleted = true;
         } catch (err) {
             console.error(err);
             alert('Error! Try again later');
