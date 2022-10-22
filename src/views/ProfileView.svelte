@@ -6,95 +6,23 @@
     import AiOutlinePicture from "svelte-icons-pack/ai/AiOutlinePicture";
     import {push} from 'svelte-spa-router'
     export let params = {}
+    import { emailLoggedIn, email } from '../store';
     // params.email
 
-    let postList = [
-        {
-            id: 1,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=1',
-            thumbnailImgUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
-        },
-        {
-            id: 2,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=2',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=2'
-        },
-        {
-            id: 3,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=3',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=3'
-        },
-        {
-            id: 4,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=4',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=4'
-        },
-        {
-            id: 5,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=5',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=5'
-        },
-        {
-            id: 6,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=6',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=6'
-        },
-        {
-            id: 7,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=7',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=7'
-        },
-        {
-            id: 8,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=8',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=8'
-        },
-        {
-            id: 9,
-            body: 'joshua_l The game in Japan was amazing and I want to share some photos',
-            writer: 'Post writer',
-            createDateTime: '2022-09-17 12:34:56',
-            profileImgUrl: 'https://picsum.photos/200/200?t=9',
-            thumbnailImgUrl: 'https://picsum.photos/200/200?t=9'
-        },
-    ];
+    let postList = [];
     import axios from 'axios';
     import { onMount } from 'svelte';
     onMount(async () => {
         try {
             const axiosResult = await axios.get('/backend/api/post/' + params.email);
             console.log('axios', axiosResult.data);
-            // postList = (axiosResult.data || []).map(post => {
-            //     return {
-            //         ...post,
-            //         profileImgUrl: 'https://picsum.photos/200/200?t=9',
-            //         thumbnailImgUrl: post.url
-            //     }
-            // });
+            postList = (axiosResult.data || []).map(post => {
+                return {
+                    ...post,
+                    profileImgUrl: 'https://picsum.photos/200/200?t=9',
+                    thumbnailImgUrl: post.url
+                }
+            });
         } catch (err) {
             console.log('err', err);
         }
@@ -102,8 +30,16 @@
     let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
     let tab = 'grid'
 
-    function onLogOutBtnClicked() {
-        push("/")
+    async function onLogOutBtnClicked() {
+        try {
+            await axios.delete('/backend/api/login')
+            push("/")
+        } catch (err) {
+            console.error(`[ProfileView] [onLogOutBtnClicked] err`, err);
+        } finally {
+            document.cookie = 'INSTASESSIONID=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            emailLoggedIn('');
+        }
     }
 </script>
 
@@ -123,6 +59,8 @@
                 </Grid>
             </Grid>
         </Grid>
+
+        {#if $email && params.email && $email == params.email}
         <Grid container style="margin: 15px 0">
             <Grid xs={10} xsOffset={1} md={6} mdOffset={0} lg={5} style="margin:0 auto 15px; padding: 0 5px">
                 <Button block on:click={() => push("/passwordchage")}>Update password</Button>
@@ -131,6 +69,7 @@
                 <Button block on:click={() => onLogOutBtnClicked()}>Log-out</Button>
             </Grid> 
         </Grid>
+        {/if}
         <Grid container style="margin: 15px 0">
             <Grid xs={6} style="border-bottom: {tab === 'grid' ? 4 : 0}px solid #6c757d; padding-bottom: 15px;cursor:pointer">
                 <div on:click={() => {tab = 'grid'}}>
