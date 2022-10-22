@@ -15,7 +15,8 @@
 
 <Grid>
     <div  class="post-img" 
-    style="background-image: url({postImgUrl});"></div>
+    style="background-image: url('{postImgUrl}');">
+</div>
 </Grid>
 <Grid style="padding: 8px;text-align: left;">
     <span  class="icon-btn">

@@ -18,7 +18,8 @@
                 return {
                     ...post,
                     profileImgUrl: 'https://picsum.photos/200/200?t=' + Math.random(),
-                    thumbnailImgUrl: post.url + Math.random(),
+                    thumbnailImgUrl: post.url.includes('https://picsum.photos/200/200') ? post.url : '/backend' + post.url,
+                    postImgUrl: post.url.includes('https://picsum.photos/200/200') ? post.url : '/backend' + post.url
                 }
             });
             // resList.forEach(post => {

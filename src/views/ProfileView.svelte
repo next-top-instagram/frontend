@@ -21,7 +21,8 @@
                 return {
                     ...post,
                     profileImgUrl: 'https://picsum.photos/200/200?t=9',
-                    thumbnailImgUrl: post.url
+                    thumbnailImgUrl: post.url.includes('https://picsum.photos/200/200') ? post.url : '/backend' + post.url,
+                    postImgUrl: post.url.includes('https://picsum.photos/200/200') ? post.url : '/backend' + post.url
                 }
             });
 
