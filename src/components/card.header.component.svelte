@@ -1,7 +1,9 @@
 <script script="ts">
     import Grid from "svelte-grid-responsive";
     import Icon from 'svelte-icons-pack/Icon.svelte';
-    import AiOutlineMore from "svelte-icons-pack/ai/AiOutlineMore";
+    // import AiOutlineMore from "svelte-icons-pack/ai/AiOutlineMore";
+    import AiOutlineDelete from "svelte-icons-pack/ai/AiOutlineDelete";
+    import { email } from '../store';
 
     export let writer = 'Post writer';
     export let createDateTime = '2022-09-17 12:34:56'
@@ -20,13 +22,15 @@
             <Grid xs={12}>{writer}</Grid>
             <Grid xs={12}>{createDateTime}</Grid>
         </Grid>
+        {#if $email == writer}
         <Grid xs={2} style="
         display: flex;
         cursor:pointer;
         align-items: center;
         justify-content: center;">
-            <Icon src={AiOutlineMore} size="24"/>
+            <Icon src={AiOutlineDelete} size="24"/>
         </Grid>
+        {/if}
     </Grid>
 </Grid>
 
