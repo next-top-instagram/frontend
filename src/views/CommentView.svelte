@@ -12,14 +12,14 @@
   export let params = {}
     const formValues = {
         body: '',
-        postId: Number(params.id)
+        postid: Number(params.id)
     }
     console.log(formValues, 'tes')
 
     const formValidator = new FormValidator(
         {
             body: yup.string().required("Body is required").matches(/^([\p{L}A-Za-z0-9\s\n]*)$/u, "Only you can type text"),
-            postId: yup.number().required()
+            postid: yup.number().required()
         }, formValues
     );
     let commentList = []
@@ -33,6 +33,13 @@
             const result = await formValidator.validate();
             errors = {};
 
+            const axiosResult = await axios.post('/backend/api/comment', formValues);
+                console.log('ax', axiosResult)
+            alert(axiosResult.data.message)
+            page = 0;
+            commentList.length = 0;
+            formValues.body = '';
+            loadCommentList(page);
         } catch (err) {
             console.log('err', err.errors, err.path);
             errors = formValidator.getErrors(err);
