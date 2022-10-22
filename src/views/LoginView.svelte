@@ -6,6 +6,7 @@
   import * as yup from 'yup';
   import axios from 'axios';
 import {push} from 'svelte-spa-router'
+    import { emailLoggedIn } from '../store';
 
     const formValues = {
         email: 'hello@example.com',
@@ -32,7 +33,7 @@ const handleSubmit = async (event) => {
             const axiosResult = await axios.post('/backend/api/login', formValues);
             console.log('ax', axiosResult)
             if (axiosResult.data.status) {
-                localStorage.setItem("email", formValues.email);
+                emailLoggedIn(formValues.email);
                 push("/")
             }
         } catch (axiosErr) {

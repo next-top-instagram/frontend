@@ -86,7 +86,7 @@
     import { onMount } from 'svelte';
     onMount(async () => {
         try {
-            const axiosResult = await axios.get('http://localhost:8082/api/post/' + params.email);
+            const axiosResult = await axios.get('/backend/api/post/' + params.email);
             console.log('axios', axiosResult.data);
             // postList = (axiosResult.data || []).map(post => {
             //     return {
