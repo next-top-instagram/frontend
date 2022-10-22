@@ -4,13 +4,17 @@
     import { Form, FormGroup, FormText, Input, Label, Button } from 'sveltestrap';
     import { FormValidator } from '../controller/form.vaildator';
     import * as yup from 'yup';
-  import { params } from "svelte-spa-router";
     import { email } from '../store';
+    import { onMount } from 'svelte';
 
+  import axios from 'axios';
+
+  export let params = {}
     const formValues = {
         body: '',
         postId: Number(params.id)
     }
+    console.log(formValues, 'tes')
 
     const formValidator = new FormValidator(
         {
@@ -18,19 +22,53 @@
             postId: yup.number().required()
         }, formValues
     );
-    let commentList = [
-        {
-            writer: 'This is user name',
-            body: 'asdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfafasdfasdfasdfasdfsafasfaf',
-            createDateTime: '2 days ago',
-            profileImgUrl: 'https://picsum.photos/200/200?t=1'
-        },
-    ]
+    let commentList = []
 
     let errors = {}
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        try {
+            event.preventDefault();
+            const result = await formValidator.validate();
+            errors = {};
+
+        } catch (err) {
+            console.log('err', err.errors, err.path);
+            errors = formValidator.getErrors(err);
+            console.log('errs', errors)
+        }
     };
+    let page = 0;
+    async function loadCommentList(page) {
+        try {
+            const axiosResult = await axios.get(`/backend/api/comment/${params.id}?page=` + page);
+            console.log('axios', axiosResult.data);
+            // resList.forEach(post => {
+            //     postList.push(post);
+            // });
+            const resList = (axiosResult.data || []).map(comment => {
+                return {
+                    writer: comment.email,
+                    createDateTime: comment.comment_time,
+                    body: comment.body,
+                    profileImgUrl: 'https://picsum.photos/200/200?t=' + Math.random(),
+                }
+            });
+            // resList.forEach(post => {
+            //     postList.push(post);
+            // });
+            commentList = commentList.concat(resList);
+            return true;
+        } catch (err) {
+            console.log('err', err);
+        }
+        finally {
+        }
+    }
+    onMount(async () => {
+        await loadCommentList(page);
+	});
 </script>
 {#if $email}
 <Form on:submit={handleSubmit}>
