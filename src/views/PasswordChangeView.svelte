@@ -35,7 +35,7 @@ import {push} from 'svelte-spa-router'
                 }
             } catch (axiosErr) {
                 console.log('axErr', axiosErr);
-                alert("Error! Try later")
+                alert("Error! Try again later")
             } finally {
                 push("/")
                 errors = {};
