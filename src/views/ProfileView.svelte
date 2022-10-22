@@ -93,7 +93,7 @@
             {#each postList as post, i}
                 <Grid xs={tab === 'grid' ? 4 : 0} style="padding:5px">
                     <div class="img-grid-item" 
-                    style="background-image: url({post.thumbnailImgUrl});"
+                    style="background-image: url('{post.thumbnailImgUrl}');"
                     on:click={() => push(`/post/${post.id}`)}></div>
                 </Grid>
             {/each}
