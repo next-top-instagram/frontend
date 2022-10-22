@@ -9,10 +9,14 @@
     export let createDateTime = '2022-09-17 12:34:56'
     export let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
     export let postImgUrl = 'https://picsum.photos/200/200?t=12'
+
+    function deletePost() {
+        console.log('del')
+    }
 </script>
 
 <!-- https://getcssscan.com/css-box-shadow-examples -->
 <Grid style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-    <CardHeader {writer} {createDateTime} {profileImgUrl}></CardHeader>
+    <CardHeader {writer} {createDateTime} {profileImgUrl} on:ondelete={() => deletePost()}></CardHeader>
     <CardBody {body} {postImgUrl} {id}></CardBody>
 </Grid>

@@ -8,6 +8,10 @@
     export let writer = 'Post writer';
     export let createDateTime = '2022-09-17 12:34:56'
     export let profileImgUrl = 'https://picsum.photos/200/200?t=1234'
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
 </script>
 
 <Grid>
@@ -28,7 +32,8 @@
         cursor:pointer;
         align-items: center;
         justify-content: center;">
-            <Icon src={AiOutlineDelete} size="24"/>
+        <span on:click={() => dispatch('ondelete')}><Icon src={AiOutlineDelete} size="24"/></span>
+            
         </Grid>
         {/if}
     </Grid>
