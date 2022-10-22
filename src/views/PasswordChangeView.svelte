@@ -4,16 +4,15 @@
   import { Button } from 'sveltestrap';
   import { FormValidator } from '../controller/form.vaildator';
   import * as yup from 'yup';
+import {push} from 'svelte-spa-router'
   import axios from 'axios';
     const formValues = {
-        email: '',
         password: '',
         passwordConfirm: '',
     }
 
     const formValidator = new FormValidator(
         {
-            email: yup.string().required("Email is required").matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Not valid email"),
             password: yup.string().required("Password is required").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/, "Not valid password"),
             passwordConfirm: yup.string().required("Password is required").oneOf([yup.ref("password"), null], "Password not matched")
         }, formValues
@@ -22,22 +21,35 @@
     let errors = {}
 
     const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            event.preventDefault();
+            const result = await formValidator.validate();
+            try {
+                console.log('send');
+                const axiosResult = await axios.put('/backend/api/account', formValues);
+                console.log('ax', axiosResult)
+                if (axiosResult.data.status) {
+                    alert("Password changed")
+                }
+            } catch (axiosErr) {
+                console.log('axErr', axiosErr);
+                alert("Error! Try later")
+            } finally {
+                push("/")
+                errors = {};
+            }
+        } catch (err) {
+            console.log('err', err.errors, err.path);
+            errors = formValidator.getErrors(err);
+            console.log('errs', errors)
+        }
     }
 </script>
 
 <!-- <Grid container> -->
     <Form on:submit={handleSubmit}>
-        <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
-            <FormGroup>
-                <Label for="exampleEmail">Origin Password</Label>
-                <!-- https://stackoverflow.com/a/59028650 -->
-                <Input plaintext type="email" bind:value={formValues.email} invalid={errors.email} feedback={errors.email} 
-                placeholder="원래 비밀번호"
-                style="border-radius: 5px;
-                border: solid 0.5px rgba(0, 0, 0, 0.1);
-                background-color: #fafafa;"/>
-            </FormGroup>
-        </Grid>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
             <FormGroup>
                 <Label for="exampleEmail">Input New Password</Label>
