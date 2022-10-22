@@ -22,6 +22,7 @@
         </Grid>
         <Grid xs={2} style="
         display: flex;
+        cursor:pointer;
         align-items: center;
         justify-content: center;">
             <Icon src={AiOutlineMore} size="24"/>

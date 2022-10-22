@@ -78,7 +78,7 @@
             </FormGroup>
         </Grid>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
-            <Button color="primary" style="width:100%" type="submit">Sign Up</Button>
+            <Button outline black block style="width:100%" type="submit">Sign Up</Button>
         </Grid>
     </Form>
 

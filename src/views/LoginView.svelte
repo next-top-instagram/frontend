@@ -71,7 +71,7 @@ const handleSubmit = async (event) => {
             </FormGroup>
         </Grid>
         <Grid xs={12} md={10} lg={4} lgOffset={4} mdOffset={1}>
-            <Button color="primary" style="width:100%" type="submit">Login</Button>
+            <Button outline black block style="width:100%" type="submit">Login</Button>
         </Grid>
     </Form>
 
