@@ -26,7 +26,7 @@
                 body = data.body;
                 writer = data.email;
                 createDateTime = data.createTime;
-                postImgUrl = data.url;
+                postImgUrl = data.url.includes('https://picsum.photos/200/200') ? data.url : '/backend' + data.url
             }
         } catch (err) {
             console.error(err);
